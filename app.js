@@ -1,6 +1,16 @@
 // ---------- Helpers ----------
 function getData(key, fallback) {
-  return JSON.parse(localStorage.getItem(key)) || fallback;
+  const saved = localStorage.getItem(key);
+
+  if (saved === null) {
+    return fallback;
+  }
+
+  try {
+    return JSON.parse(saved);
+  } catch {
+    return fallback;
+  }
 }
 
 function saveData(key, data) {
@@ -11,19 +21,155 @@ function formatMoney(amount) {
   return `$${Number(amount || 0).toLocaleString()}`;
 }
 
+// ---------- Default Data ----------
+const defaultLinks = [
+  {
+    id: 1,
+    name: "Amazon",
+    url: "https://www.amazon.ca/"
+  },
+  {
+    id: 2,
+    name: "Prime Video",
+    url: "https://www.primevideo.com/"
+  },
+  {
+    id: 3,
+    name: "YouTube",
+    url: "https://www.youtube.com/"
+  },
+  {
+    id: 4,
+    name: "Netflix",
+    url: "https://www.netflix.com/"
+  },
+  {
+    id: 5,
+    name: "Disney+",
+    url: "https://www.disneyplus.com/"
+  },
+  {
+    id: 6,
+    name: "TSN",
+    url: "https://www.tsn.ca/"
+  },
+  {
+    id: 7,
+    name: "Sportsnet",
+    url: "https://www.sportsnet.ca/"
+  },
+  {
+    id: 8,
+    name: "DAZN",
+    url: "https://www.dazn.com/"
+  }
+];
+
+const defaultPhotos = [
+  {
+    id: 101,
+    image: "photos/IMG_3813.JPEG",
+    caption: "Dressed up and glowing together."
+  },
+  {
+    id: 102,
+    image: "photos/IMG_3870.JPEG",
+    caption: "A sky full of clouds, and still my favorite view is you."
+  },
+  {
+    id: 103,
+    image: "photos/IMG_4031.JPEG",
+    caption: "The way we look at each other says everything."
+  },
+  {
+    id: 104,
+    image: "photos/IMG_4290.JPEG",
+    caption: "Cold city, warm hearts."
+  },
+  {
+    id: 105,
+    image: "photos/IMG_7379.JPEG",
+    caption: "Paris nights and the prettiest smile."
+  },
+  {
+    id: 106,
+    image: "photos/IMG_7506.JPEG",
+    caption: "Silly little coffee date memories."
+  },
+  {
+    id: 107,
+    image: "photos/IMG_7678.JPEG",
+    caption: "Museum days feel better with you."
+  },
+  {
+    id: 108,
+    image: "photos/IMG_8126.JPEG",
+    caption: "Sunshine, gardens, and us."
+  },
+  {
+    id: 109,
+    image: "photos/IMG_8650.JPEG",
+    caption: "Canal kisses and happy moments."
+  },
+  {
+    id: 110,
+    image: "photos/IMG_0509.JPEG",
+    caption: "Snowy nights, cozy love."
+  },
+  {
+    id: 111,
+    image: "photos/IMG_1238.JPEG",
+    caption: "Grand Canyon, tiny us, huge love."
+  },
+  {
+    id: 112,
+    image: "photos/IMG_1240.JPEG",
+    caption: "Adventure looks good on us."
+  },
+  {
+    id: 113,
+    image: "photos/IMG_2602.JPEG",
+    caption: "Sunny smiles in the city."
+  },
+  {
+    id: 114,
+    image: "photos/IMG_2609.JPEG",
+    caption: "A picture-perfect day together."
+  },
+  {
+    id: 115,
+    image: "photos/IMG_2617.JPEG",
+    caption: "Big monument, bigger smiles."
+  },
+  {
+    id: 116,
+    image: "photos/IMG_3547.JPEG",
+    caption: "Train rides and little love stories."
+  }
+];
+
 // ---------- App State ----------
 let currentDate = new Date();
 
 let todos = getData("todos", []);
 let events = getData("events", []);
-let links = getData("links", []);
+let links = getData("links", defaultLinks);
 let budget = getData("budget", {
   income: 0,
   expenses: 0,
   savings: 0
 });
 let wishlist = getData("wishlist", []);
-let photos = getData("photos", []);
+let photos = getData("photos", defaultPhotos);
+
+// Save defaults the first time the site is opened
+if (localStorage.getItem("links") === null) {
+  saveData("links", links);
+}
+
+if (localStorage.getItem("photos") === null) {
+  saveData("photos", photos);
+}
 
 // ---------- Tabs ----------
 const navButtons = document.querySelectorAll(".nav-btn");
@@ -52,7 +198,12 @@ const affirmations = [
   "You deserve peace, joy, and a really good day.",
   "The world is better with you in it.",
   "You are my favorite person.",
-  "You are allowed to rest and still be amazing."
+  "You are allowed to rest and still be amazing.",
+  "You make ordinary days feel special.",
+  "You are the sweetest part of my day.",
+  "You are magic in human form.",
+  "You are enough, exactly as you are.",
+  "You deserve a soft, happy, beautiful day."
 ];
 
 function renderTodayCard() {
