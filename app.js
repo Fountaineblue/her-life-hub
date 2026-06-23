@@ -211,16 +211,6 @@ const foodIdeas = [
     vibe: "Fun, cheesy, crispy, and perfect when she wants a snacky meal."
   },
   {
-    name: "Samgyeopsal Lettuce Wraps",
-    category: "Korean",
-    vibe: "Grilled pork belly, rice, lettuce, and sauce. A fun build-your-own meal."
-  },
-  {
-    name: "Budae Jjigae",
-    category: "Korean",
-    vibe: "A spicy hot pot with noodles, sausage, kimchi, and cozy chaos."
-  },
-  {
     name: "Jajangmyeon",
     category: "Korean",
     vibe: "Noodles with black bean sauce. Savory, rich, and very comforting."
@@ -229,11 +219,6 @@ const foodIdeas = [
     name: "Spicy Pork Rice Bowl",
     category: "Korean",
     vibe: "Bold, spicy, filling, and perfect with rice."
-  },
-  {
-    name: "Korean BBQ Bowl",
-    category: "Korean",
-    vibe: "All the Korean BBQ flavors without needing the grill."
   },
 
   {
@@ -277,21 +262,6 @@ const foodIdeas = [
     vibe: "Light, crispy, and perfect when she wants something fun."
   },
   {
-    name: "Yakitori",
-    category: "Japanese",
-    vibe: "Grilled chicken skewers with a sweet-savory glaze."
-  },
-  {
-    name: "Okonomiyaki",
-    category: "Japanese",
-    vibe: "A savory pancake that feels fun, filling, and different."
-  },
-  {
-    name: "Takoyaki",
-    category: "Japanese",
-    vibe: "Little crispy-soft snack balls with sauce and bonito flakes."
-  },
-  {
     name: "Gyoza",
     category: "Japanese",
     vibe: "Pan-fried dumplings that are always a good idea."
@@ -300,16 +270,6 @@ const foodIdeas = [
     name: "Poke Bowl",
     category: "Japanese-Inspired",
     vibe: "Fresh, customizable, and perfect when she wants something lighter."
-  },
-  {
-    name: "Miso Soup and Rice",
-    category: "Japanese",
-    vibe: "Simple, warm, and gentle when she wants something easy."
-  },
-  {
-    name: "Salmon Teriyaki",
-    category: "Japanese",
-    vibe: "A cozy rice plate with sweet-savory salmon."
   },
 
   {
@@ -358,24 +318,9 @@ const foodIdeas = [
     vibe: "Crispy, tangy, spicy little bites that are impossible to eat sadly."
   },
   {
-    name: "Aloo Tama",
-    category: "Nepali",
-    vibe: "Potato and bamboo shoot curry with a unique cozy flavor."
-  },
-  {
-    name: "Sel Roti",
-    category: "Nepali",
-    vibe: "Sweet, crispy rice bread that feels like a treat."
-  },
-  {
     name: "Samosa Chaat",
     category: "South Asian",
     vibe: "Crunchy, saucy, spicy, and perfect for a snacky dinner."
-  },
-  {
-    name: "Fried Rice Nepali Style",
-    category: "Nepali",
-    vibe: "Quick, filling, and easy to customize."
   },
   {
     name: "Aloo Paratha",
@@ -428,16 +373,6 @@ const foodIdeas = [
     category: "Chipotle-Style",
     vibe: "Rice, beans, fajita veggies, salsa, corn, lettuce, and guac."
   },
-  {
-    name: "Barbacoa Bowl",
-    category: "Chipotle-Style",
-    vibe: "Rich, savory, and perfect when she wants something hearty."
-  },
-  {
-    name: "Chicken Tacos",
-    category: "Chipotle-Style",
-    vibe: "Simple, cute, and easy to eat."
-  },
 
   {
     name: "Pho",
@@ -480,11 +415,6 @@ const foodIdeas = [
     vibe: "Saucy noodles that always feel like a comfort meal."
   },
   {
-    name: "General Tso’s Chicken",
-    category: "Cozy Takeout",
-    vibe: "Sweet, spicy, crispy, and very takeout-coded."
-  },
-  {
     name: "Orange Chicken",
     category: "Cozy Takeout",
     vibe: "Crispy chicken with sweet citrus sauce. Easy happiness."
@@ -507,7 +437,7 @@ const foodIdeas = [
   {
     name: "Avocado Toast with Egg",
     category: "Quick Meal",
-    vibe: "Cute café energy at home."
+    vibe: "Cute cafe energy at home."
   },
   {
     name: "Grilled Cheese and Tomato Soup",
@@ -552,7 +482,7 @@ const foodIdeas = [
   {
     name: "Acai Bowl",
     category: "Light Meal",
-    vibe: "Cold, fruity, and cute café vibes."
+    vibe: "Cold, fruity, and cute cafe vibes."
   },
   {
     name: "Chicken Noodle Soup",
@@ -580,7 +510,6 @@ let budget = getData("budget", {
 let wishlist = getData("wishlist", []);
 let photos = getData("photos", defaultPhotos);
 
-// Save defaults the first time the site is opened
 if (localStorage.getItem("links") === null) {
   saveData("links", links);
 }
@@ -664,7 +593,8 @@ function renderTodayCard() {
   );
 
   const dailyIndex = hashString(todayString) % affirmations.length;
-  document.getElementById("affirmationText").textContent = affirmations[dailyIndex];
+  document.getElementById("affirmationText").textContent =
+    affirmations[dailyIndex];
 
   const todayEvents = events.filter((event) => event.date === todayString);
   const todayEventsList = document.getElementById("todayEvents");
@@ -714,7 +644,10 @@ function renderCalendar() {
     const dayBox = document.createElement("div");
     dayBox.classList.add("day");
 
-    const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+    const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(
+      day
+    ).padStart(2, "0")}`;
+
     const todayString = new Date().toISOString().split("T")[0];
 
     if (dateString === todayString) {
@@ -792,7 +725,8 @@ function renderTodos() {
   todoList.innerHTML = "";
 
   if (todos.length === 0) {
-    todoList.innerHTML = "<li>No tasks yet. Add something cute or productive.</li>";
+    todoList.innerHTML =
+      "<li>No tasks yet. Add something cute or productive.</li>";
     return;
   }
 
@@ -905,12 +839,20 @@ function renderBudget() {
   document.getElementById("expenseInput").value = budget.expenses || "";
   document.getElementById("savingsInput").value = budget.savings || "";
 
-  const leftover = Number(budget.income) - Number(budget.expenses) - Number(budget.savings);
+  const leftover =
+    Number(budget.income) - Number(budget.expenses) - Number(budget.savings);
 
-  document.getElementById("incomeDisplay").textContent = formatMoney(budget.income);
-  document.getElementById("expenseDisplay").textContent = formatMoney(budget.expenses);
-  document.getElementById("savingsDisplay").textContent = formatMoney(budget.savings);
-  document.getElementById("leftoverDisplay").textContent = formatMoney(leftover);
+  document.getElementById("incomeDisplay").textContent = formatMoney(
+    budget.income
+  );
+  document.getElementById("expenseDisplay").textContent = formatMoney(
+    budget.expenses
+  );
+  document.getElementById("savingsDisplay").textContent = formatMoney(
+    budget.savings
+  );
+  document.getElementById("leftoverDisplay").textContent =
+    formatMoney(leftover);
 }
 
 document.getElementById("saveBudget").addEventListener("click", () => {
@@ -940,7 +882,9 @@ function renderWishlist() {
 
     card.innerHTML = `
       <h3>${wish.name}</h3>
-      <p><strong>Price:</strong> ${wish.price ? formatMoney(wish.price) : "Not added"}</p>
+      <p><strong>Price:</strong> ${
+        wish.price ? formatMoney(wish.price) : "Not added"
+      }</p>
       <p><strong>Priority:</strong> ${wish.priority}</p>
       ${wish.url ? `<a href="${wish.url}" target="_blank">View Item</a>` : ""}
       <br><br>
@@ -1047,14 +991,18 @@ function renderRandomFood() {
   const foodResult = document.getElementById("foodResult");
 
   foodResult.innerHTML = `
-    <p class="small-label">Today’s pick</p>
+    <p class="small-label">Today's pick</p>
     <h3>${food.name}</h3>
     <span class="food-category">${food.category}</span>
     <p>${food.vibe}</p>
   `;
 }
 
-document.getElementById("pickFoodBtn").addEventListener("click", renderRandomFood);
+const pickFoodBtn = document.getElementById("pickFoodBtn");
+
+if (pickFoodBtn) {
+  pickFoodBtn.addEventListener("click", renderRandomFood);
+}
 
 // ---------- Initial Render ----------
 renderTodayCard();
