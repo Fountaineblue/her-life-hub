@@ -334,6 +334,80 @@ button:hover {
   text-align: center;
 }
 
+/* What to Eat */
+.food-card {
+  max-width: 850px;
+}
+
+.food-picker-box {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 22px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.big-button {
+  font-size: 20px;
+  padding: 20px;
+  border-radius: 24px;
+  box-shadow: 0 8px 18px rgba(141, 69, 101, 0.16);
+}
+
+.food-result {
+  background: linear-gradient(135deg, #fff7fb, #ffe1ee);
+  border: 1px solid #ffd1e4;
+  border-radius: 24px;
+  padding: 24px;
+  min-height: 170px;
+}
+
+.food-result h3 {
+  font-size: 30px;
+  margin: 8px 0;
+  color: #d63384;
+}
+
+.food-result p {
+  line-height: 1.5;
+}
+
+.small-label {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #8e526a;
+  margin: 0;
+}
+
+.food-category {
+  display: inline-block;
+  background: white;
+  color: #d63384;
+  border: 1px solid #ffd1e4;
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.food-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.food-categories span {
+  background: #fff7fb;
+  border: 1px solid #ffd1e4;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: bold;
+  color: #8e526a;
+}
+
 @media (max-width: 900px) {
   .app {
     flex-direction: column;
@@ -352,7 +426,8 @@ button:hover {
 
   .home-grid,
   .budget-grid,
-  .budget-summary {
+  .budget-summary,
+  .food-picker-box {
     grid-template-columns: 1fr;
   }
 
