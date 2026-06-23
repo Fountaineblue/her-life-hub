@@ -21,6 +21,17 @@ function formatMoney(amount) {
   return `$${Number(amount || 0).toLocaleString()}`;
 }
 
+function hashString(text) {
+  let hash = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    hash = (hash << 5) - hash + text.charCodeAt(i);
+    hash |= 0;
+  }
+
+  return Math.abs(hash);
+}
+
 // ---------- Default Data ----------
 const defaultLinks = [
   {
@@ -148,6 +159,413 @@ const defaultPhotos = [
   }
 ];
 
+const foodIdeas = [
+  {
+    name: "Bibimbap",
+    category: "Korean",
+    vibe: "A colorful rice bowl with veggies, egg, meat, and spicy gochujang. Cozy but still balanced."
+  },
+  {
+    name: "Tteokbokki",
+    category: "Korean",
+    vibe: "Spicy, chewy rice cakes for when she wants comfort food with a little drama."
+  },
+  {
+    name: "Korean Fried Chicken",
+    category: "Korean",
+    vibe: "Crispy, saucy, sweet, spicy, and perfect for a treat-yourself meal."
+  },
+  {
+    name: "Kimchi Fried Rice",
+    category: "Korean",
+    vibe: "Easy, flavorful, and perfect with a fried egg on top."
+  },
+  {
+    name: "Kimbap",
+    category: "Korean",
+    vibe: "Cute little rice rolls that feel like a snack and a meal at the same time."
+  },
+  {
+    name: "Bulgogi Rice Bowl",
+    category: "Korean",
+    vibe: "Sweet-savory beef over rice with veggies. A perfect comfort bowl."
+  },
+  {
+    name: "Japchae",
+    category: "Korean",
+    vibe: "Glass noodles, veggies, and sweet-savory flavor. Light but satisfying."
+  },
+  {
+    name: "Kimchi Stew",
+    category: "Korean",
+    vibe: "Warm, spicy, and cozy for a cold or lazy day."
+  },
+  {
+    name: "Soondubu Jjigae",
+    category: "Korean",
+    vibe: "Soft tofu stew that feels warm, spicy, and comforting."
+  },
+  {
+    name: "Korean Corn Dog",
+    category: "Korean",
+    vibe: "Fun, cheesy, crispy, and perfect when she wants a snacky meal."
+  },
+  {
+    name: "Samgyeopsal Lettuce Wraps",
+    category: "Korean",
+    vibe: "Grilled pork belly, rice, lettuce, and sauce. A fun build-your-own meal."
+  },
+  {
+    name: "Budae Jjigae",
+    category: "Korean",
+    vibe: "A spicy hot pot with noodles, sausage, kimchi, and cozy chaos."
+  },
+  {
+    name: "Jajangmyeon",
+    category: "Korean",
+    vibe: "Noodles with black bean sauce. Savory, rich, and very comforting."
+  },
+  {
+    name: "Spicy Pork Rice Bowl",
+    category: "Korean",
+    vibe: "Bold, spicy, filling, and perfect with rice."
+  },
+  {
+    name: "Korean BBQ Bowl",
+    category: "Korean",
+    vibe: "All the Korean BBQ flavors without needing the grill."
+  },
+
+  {
+    name: "Chicken Katsu",
+    category: "Japanese",
+    vibe: "Crispy chicken cutlet with rice and sauce. Simple, crunchy, and satisfying."
+  },
+  {
+    name: "Japanese Curry",
+    category: "Japanese",
+    vibe: "Warm curry over rice. Cozy, filling, and perfect for a chill night."
+  },
+  {
+    name: "Ramen",
+    category: "Japanese",
+    vibe: "Noodles, broth, toppings, and comfort in one bowl."
+  },
+  {
+    name: "Sushi Bowl",
+    category: "Japanese",
+    vibe: "All the sushi flavors without needing to roll anything."
+  },
+  {
+    name: "Onigiri",
+    category: "Japanese",
+    vibe: "Cute rice balls with filling. Perfect for a small meal or snack."
+  },
+  {
+    name: "Udon Noodle Soup",
+    category: "Japanese",
+    vibe: "Thick noodles in warm broth. Soft, cozy, and easy."
+  },
+  {
+    name: "Teriyaki Chicken Bowl",
+    category: "Japanese",
+    vibe: "Sweet-savory chicken over rice with veggies. Always a safe choice."
+  },
+  {
+    name: "Tempura",
+    category: "Japanese",
+    vibe: "Light, crispy, and perfect when she wants something fun."
+  },
+  {
+    name: "Yakitori",
+    category: "Japanese",
+    vibe: "Grilled chicken skewers with a sweet-savory glaze."
+  },
+  {
+    name: "Okonomiyaki",
+    category: "Japanese",
+    vibe: "A savory pancake that feels fun, filling, and different."
+  },
+  {
+    name: "Takoyaki",
+    category: "Japanese",
+    vibe: "Little crispy-soft snack balls with sauce and bonito flakes."
+  },
+  {
+    name: "Gyoza",
+    category: "Japanese",
+    vibe: "Pan-fried dumplings that are always a good idea."
+  },
+  {
+    name: "Poke Bowl",
+    category: "Japanese-Inspired",
+    vibe: "Fresh, customizable, and perfect when she wants something lighter."
+  },
+  {
+    name: "Miso Soup and Rice",
+    category: "Japanese",
+    vibe: "Simple, warm, and gentle when she wants something easy."
+  },
+  {
+    name: "Salmon Teriyaki",
+    category: "Japanese",
+    vibe: "A cozy rice plate with sweet-savory salmon."
+  },
+
+  {
+    name: "Momo",
+    category: "Nepali",
+    vibe: "Juicy dumplings with spicy achar. Basically happiness in bite-sized form."
+  },
+  {
+    name: "Jhol Momo",
+    category: "Nepali",
+    vibe: "Momo in a spicy, tangy soup. Cozy and full of flavor."
+  },
+  {
+    name: "Chicken Chow Mein",
+    category: "Nepali",
+    vibe: "Stir-fried noodles that are quick, flavorful, and satisfying."
+  },
+  {
+    name: "Veg Chow Mein",
+    category: "Nepali",
+    vibe: "Noodles with veggies and big takeout energy."
+  },
+  {
+    name: "Thukpa",
+    category: "Nepali",
+    vibe: "Warm noodle soup for a cozy, feel-better meal."
+  },
+  {
+    name: "Dal Bhat",
+    category: "Nepali",
+    vibe: "Comforting rice, lentils, and sides. Simple and nourishing."
+  },
+  {
+    name: "Chicken Sekuwa",
+    category: "Nepali",
+    vibe: "Smoky, spiced grilled chicken that feels special."
+  },
+  {
+    name: "Chatpate",
+    category: "Nepali",
+    vibe: "Crunchy, spicy, tangy snack mix for when she wants something fun."
+  },
+  {
+    name: "Pani Puri",
+    category: "Nepali / South Asian",
+    vibe: "Crispy, tangy, spicy little bites that are impossible to eat sadly."
+  },
+  {
+    name: "Aloo Tama",
+    category: "Nepali",
+    vibe: "Potato and bamboo shoot curry with a unique cozy flavor."
+  },
+  {
+    name: "Sel Roti",
+    category: "Nepali",
+    vibe: "Sweet, crispy rice bread that feels like a treat."
+  },
+  {
+    name: "Samosa Chaat",
+    category: "South Asian",
+    vibe: "Crunchy, saucy, spicy, and perfect for a snacky dinner."
+  },
+  {
+    name: "Fried Rice Nepali Style",
+    category: "Nepali",
+    vibe: "Quick, filling, and easy to customize."
+  },
+  {
+    name: "Aloo Paratha",
+    category: "South Asian",
+    vibe: "Stuffed flatbread with potato. Cozy, filling, and perfect with yogurt."
+  },
+  {
+    name: "Butter Chicken Rice Bowl",
+    category: "South Asian",
+    vibe: "Creamy, cozy, and perfect when she wants something rich."
+  },
+
+  {
+    name: "Chipotle Chicken Bowl",
+    category: "Chipotle-Style",
+    vibe: "Rice, beans, chicken, salsa, corn, cheese, and guac if she deserves extra happiness."
+  },
+  {
+    name: "Steak Burrito Bowl",
+    category: "Chipotle-Style",
+    vibe: "A filling bowl with steak, rice, beans, veggies, and all the toppings."
+  },
+  {
+    name: "Sofritas Bowl",
+    category: "Chipotle-Style",
+    vibe: "A plant-based bowl that is spicy, saucy, and satisfying."
+  },
+  {
+    name: "Chicken Burrito",
+    category: "Chipotle-Style",
+    vibe: "A classic wrap-it-all-up meal when she wants something filling."
+  },
+  {
+    name: "Quesadilla",
+    category: "Chipotle-Style",
+    vibe: "Cheesy, crispy, and perfect with salsa and sour cream."
+  },
+  {
+    name: "Taco Bowl",
+    category: "Chipotle-Style",
+    vibe: "All the taco flavors in bowl form. Easy and customizable."
+  },
+  {
+    name: "Loaded Nachos",
+    category: "Chipotle-Style",
+    vibe: "Crunchy chips, melty cheese, salsa, protein, and cozy chaos."
+  },
+  {
+    name: "Veggie Burrito Bowl",
+    category: "Chipotle-Style",
+    vibe: "Rice, beans, fajita veggies, salsa, corn, lettuce, and guac."
+  },
+  {
+    name: "Barbacoa Bowl",
+    category: "Chipotle-Style",
+    vibe: "Rich, savory, and perfect when she wants something hearty."
+  },
+  {
+    name: "Chicken Tacos",
+    category: "Chipotle-Style",
+    vibe: "Simple, cute, and easy to eat."
+  },
+
+  {
+    name: "Pho",
+    category: "Cozy Takeout",
+    vibe: "Warm broth, noodles, herbs, and comfort. Perfect for a tired day."
+  },
+  {
+    name: "Pad Thai",
+    category: "Cozy Takeout",
+    vibe: "Sweet, tangy, noodly, and always a good option."
+  },
+  {
+    name: "Drunken Noodles",
+    category: "Cozy Takeout",
+    vibe: "Spicy noodles with big flavor and takeout-night energy."
+  },
+  {
+    name: "Thai Green Curry",
+    category: "Cozy Takeout",
+    vibe: "Creamy, spicy, and amazing over rice."
+  },
+  {
+    name: "Dumplings",
+    category: "Quick Bites",
+    vibe: "Steam them, fry them, dip them, love them."
+  },
+  {
+    name: "Spring Rolls",
+    category: "Quick Bites",
+    vibe: "Fresh, crunchy, and perfect with peanut sauce."
+  },
+  {
+    name: "Fried Rice",
+    category: "Quick Meal",
+    vibe: "Easy, fast, and great for using whatever is in the fridge."
+  },
+  {
+    name: "Lo Mein",
+    category: "Cozy Takeout",
+    vibe: "Saucy noodles that always feel like a comfort meal."
+  },
+  {
+    name: "General Tso’s Chicken",
+    category: "Cozy Takeout",
+    vibe: "Sweet, spicy, crispy, and very takeout-coded."
+  },
+  {
+    name: "Orange Chicken",
+    category: "Cozy Takeout",
+    vibe: "Crispy chicken with sweet citrus sauce. Easy happiness."
+  },
+  {
+    name: "Shawarma Bowl",
+    category: "Rice Bowl",
+    vibe: "Rice, chicken, garlic sauce, veggies, and cozy Mediterranean flavor."
+  },
+  {
+    name: "Falafel Wrap",
+    category: "Quick Meal",
+    vibe: "Crunchy, fresh, saucy, and easy to grab."
+  },
+  {
+    name: "Chicken Caesar Wrap",
+    category: "Quick Meal",
+    vibe: "Simple, fresh, and good when she wants something easy."
+  },
+  {
+    name: "Avocado Toast with Egg",
+    category: "Quick Meal",
+    vibe: "Cute café energy at home."
+  },
+  {
+    name: "Grilled Cheese and Tomato Soup",
+    category: "Comfort Food",
+    vibe: "Classic, cozy, and perfect for a soft day."
+  },
+  {
+    name: "Mac and Cheese",
+    category: "Comfort Food",
+    vibe: "Cheesy comfort for when the day needs to be easier."
+  },
+  {
+    name: "Loaded Fries",
+    category: "Comfort Food",
+    vibe: "Crispy fries with toppings. Not healthy, but emotionally correct."
+  },
+  {
+    name: "Chicken Alfredo Pasta",
+    category: "Comfort Food",
+    vibe: "Creamy pasta for when she wants something rich and cozy."
+  },
+  {
+    name: "Pesto Pasta",
+    category: "Quick Meal",
+    vibe: "Fresh, easy, and cute dinner energy."
+  },
+  {
+    name: "Breakfast for Dinner",
+    category: "Comfort Food",
+    vibe: "Eggs, toast, hash browns, pancakes, or whatever feels fun."
+  },
+  {
+    name: "Boba and Snack Run",
+    category: "Treat",
+    vibe: "Not exactly dinner, but sometimes the heart wants boba."
+  },
+  {
+    name: "Smoothie Bowl",
+    category: "Light Meal",
+    vibe: "Fresh, pretty, and good for a lighter craving."
+  },
+  {
+    name: "Acai Bowl",
+    category: "Light Meal",
+    vibe: "Cold, fruity, and cute café vibes."
+  },
+  {
+    name: "Chicken Noodle Soup",
+    category: "Comfort Food",
+    vibe: "Soft, warm, and perfect when she needs comfort."
+  },
+  {
+    name: "Rice Bowl with Egg and Avocado",
+    category: "Quick Meal",
+    vibe: "Simple, filling, and easy to make with pantry basics."
+  }
+];
+
 // ---------- App State ----------
 let currentDate = new Date();
 
@@ -203,7 +621,32 @@ const affirmations = [
   "You are the sweetest part of my day.",
   "You are magic in human form.",
   "You are enough, exactly as you are.",
-  "You deserve a soft, happy, beautiful day."
+  "You deserve a soft, happy, beautiful day.",
+  "You are stronger than today’s stress.",
+  "You make everything feel warmer.",
+  "You are allowed to take things one step at a time.",
+  "You bring light into every room you enter.",
+  "You are worthy of love, comfort, and good things.",
+  "You are doing amazing, even on the hard days.",
+  "Your smile is one of my favorite things in the world.",
+  "You deserve a day that feels gentle and kind.",
+  "You are capable of handling whatever today brings.",
+  "You are deeply loved, always.",
+  "You are my favorite hello and my hardest goodbye.",
+  "You make the little moments feel big.",
+  "You are more than enough.",
+  "You deserve to feel proud of yourself today.",
+  "You are beautiful inside and out.",
+  "The best part of my day is anything with you in it.",
+  "You are a blessing in my life.",
+  "You are allowed to slow down and breathe.",
+  "You have such a good heart.",
+  "You are loved on your productive days and your tired days.",
+  "You are my peace.",
+  "You turn normal days into memories.",
+  "You deserve flowers, snacks, and zero stress.",
+  "You are the cutest part of this website.",
+  "You are the reason this little hub exists."
 ];
 
 function renderTodayCard() {
@@ -220,7 +663,7 @@ function renderTodayCard() {
     }
   );
 
-  const dailyIndex = today.getDate() % affirmations.length;
+  const dailyIndex = hashString(todayString) % affirmations.length;
   document.getElementById("affirmationText").textContent = affirmations[dailyIndex];
 
   const todayEvents = events.filter((event) => event.date === todayString);
@@ -595,6 +1038,23 @@ document.getElementById("photoForm").addEventListener("submit", (e) => {
 
   reader.readAsDataURL(file);
 });
+
+// ---------- What to Eat ----------
+function renderRandomFood() {
+  const randomIndex = Math.floor(Math.random() * foodIdeas.length);
+  const food = foodIdeas[randomIndex];
+
+  const foodResult = document.getElementById("foodResult");
+
+  foodResult.innerHTML = `
+    <p class="small-label">Today’s pick</p>
+    <h3>${food.name}</h3>
+    <span class="food-category">${food.category}</span>
+    <p>${food.vibe}</p>
+  `;
+}
+
+document.getElementById("pickFoodBtn").addEventListener("click", renderRandomFood);
 
 // ---------- Initial Render ----------
 renderTodayCard();
