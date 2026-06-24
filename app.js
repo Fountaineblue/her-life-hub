@@ -1,4 +1,3 @@
-// ---------- Helpers ----------
 function getData(key, fallback) {
   const saved = localStorage.getItem(key);
 
@@ -18,7 +17,7 @@ function saveData(key, data) {
 }
 
 function formatMoney(amount) {
-  return `$${Number(amount || 0).toLocaleString()}`;
+  return "$" + Number(amount || 0).toLocaleString();
 }
 
 function hashString(text) {
@@ -32,509 +31,36 @@ function hashString(text) {
   return Math.abs(hash);
 }
 
-// ---------- Default Data ----------
 const defaultLinks = [
-  {
-    id: 1,
-    name: "Amazon",
-    url: "https://www.amazon.ca/"
-  },
-  {
-    id: 2,
-    name: "Prime Video",
-    url: "https://www.primevideo.com/"
-  },
-  {
-    id: 3,
-    name: "YouTube",
-    url: "https://www.youtube.com/"
-  },
-  {
-    id: 4,
-    name: "Netflix",
-    url: "https://www.netflix.com/"
-  },
-  {
-    id: 5,
-    name: "Disney+",
-    url: "https://www.disneyplus.com/"
-  },
-  {
-    id: 6,
-    name: "TSN",
-    url: "https://www.tsn.ca/"
-  },
-  {
-    id: 7,
-    name: "Sportsnet",
-    url: "https://www.sportsnet.ca/"
-  },
-  {
-    id: 8,
-    name: "DAZN",
-    url: "https://www.dazn.com/"
-  }
+  { id: 1, name: "Amazon", url: "https://www.amazon.ca/" },
+  { id: 2, name: "Prime Video", url: "https://www.primevideo.com/" },
+  { id: 3, name: "YouTube", url: "https://www.youtube.com/" },
+  { id: 4, name: "Netflix", url: "https://www.netflix.com/" },
+  { id: 5, name: "Disney+", url: "https://www.disneyplus.com/" },
+  { id: 6, name: "TSN", url: "https://www.tsn.ca/" },
+  { id: 7, name: "Sportsnet", url: "https://www.sportsnet.ca/" },
+  { id: 8, name: "DAZN", url: "https://www.dazn.com/" }
 ];
 
 const defaultPhotos = [
-  {
-    id: 101,
-    image: "photos/IMG_3813.JPEG",
-    caption: "Dressed up and glowing together."
-  },
-  {
-    id: 102,
-    image: "photos/IMG_3870.JPEG",
-    caption: "A sky full of clouds, and still my favorite view is you."
-  },
-  {
-    id: 103,
-    image: "photos/IMG_4031.JPEG",
-    caption: "The way we look at each other says everything."
-  },
-  {
-    id: 104,
-    image: "photos/IMG_4290.JPEG",
-    caption: "Cold city, warm hearts."
-  },
-  {
-    id: 105,
-    image: "photos/IMG_7379.JPEG",
-    caption: "Paris nights and the prettiest smile."
-  },
-  {
-    id: 106,
-    image: "photos/IMG_7506.JPEG",
-    caption: "Silly little coffee date memories."
-  },
-  {
-    id: 107,
-    image: "photos/IMG_7678.JPEG",
-    caption: "Museum days feel better with you."
-  },
-  {
-    id: 108,
-    image: "photos/IMG_8126.JPEG",
-    caption: "Sunshine, gardens, and us."
-  },
-  {
-    id: 109,
-    image: "photos/IMG_8650.JPEG",
-    caption: "Canal kisses and happy moments."
-  },
-  {
-    id: 110,
-    image: "photos/IMG_0509.JPEG",
-    caption: "Snowy nights, cozy love."
-  },
-  {
-    id: 111,
-    image: "photos/IMG_1238.JPEG",
-    caption: "Grand Canyon, tiny us, huge love."
-  },
-  {
-    id: 112,
-    image: "photos/IMG_1240.JPEG",
-    caption: "Adventure looks good on us."
-  },
-  {
-    id: 113,
-    image: "photos/IMG_2602.JPEG",
-    caption: "Sunny smiles in the city."
-  },
-  {
-    id: 114,
-    image: "photos/IMG_2609.JPEG",
-    caption: "A picture-perfect day together."
-  },
-  {
-    id: 115,
-    image: "photos/IMG_2617.JPEG",
-    caption: "Big monument, bigger smiles."
-  },
-  {
-    id: 116,
-    image: "photos/IMG_3547.JPEG",
-    caption: "Train rides and little love stories."
-  }
+  { id: 101, image: "photos/IMG_3813.JPEG", caption: "Dressed up and glowing together." },
+  { id: 102, image: "photos/IMG_3870.JPEG", caption: "A sky full of clouds, and still my favorite view is you." },
+  { id: 103, image: "photos/IMG_4031.JPEG", caption: "The way we look at each other says everything." },
+  { id: 104, image: "photos/IMG_4290.JPEG", caption: "Cold city, warm hearts." },
+  { id: 105, image: "photos/IMG_7379.JPEG", caption: "Paris nights and the prettiest smile." },
+  { id: 106, image: "photos/IMG_7506.JPEG", caption: "Silly little coffee date memories." },
+  { id: 107, image: "photos/IMG_7678.JPEG", caption: "Museum days feel better with you." },
+  { id: 108, image: "photos/IMG_8126.JPEG", caption: "Sunshine, gardens, and us." },
+  { id: 109, image: "photos/IMG_8650.JPEG", caption: "Canal kisses and happy moments." },
+  { id: 110, image: "photos/IMG_0509.JPEG", caption: "Snowy nights, cozy love." },
+  { id: 111, image: "photos/IMG_1238.JPEG", caption: "Grand Canyon, tiny us, huge love." },
+  { id: 112, image: "photos/IMG_1240.JPEG", caption: "Adventure looks good on us." },
+  { id: 113, image: "photos/IMG_2602.JPEG", caption: "Sunny smiles in the city." },
+  { id: 114, image: "photos/IMG_2609.JPEG", caption: "A picture-perfect day together." },
+  { id: 115, image: "photos/IMG_2617.JPEG", caption: "Big monument, bigger smiles." },
+  { id: 116, image: "photos/IMG_3547.JPEG", caption: "Train rides and little love stories." }
 ];
 
-const foodIdeas = [
-  {
-    name: "Bibimbap",
-    category: "Korean",
-    vibe: "A colorful rice bowl with veggies, egg, meat, and spicy gochujang. Cozy but still balanced."
-  },
-  {
-    name: "Tteokbokki",
-    category: "Korean",
-    vibe: "Spicy, chewy rice cakes for when she wants comfort food with a little drama."
-  },
-  {
-    name: "Korean Fried Chicken",
-    category: "Korean",
-    vibe: "Crispy, saucy, sweet, spicy, and perfect for a treat-yourself meal."
-  },
-  {
-    name: "Kimchi Fried Rice",
-    category: "Korean",
-    vibe: "Easy, flavorful, and perfect with a fried egg on top."
-  },
-  {
-    name: "Kimbap",
-    category: "Korean",
-    vibe: "Cute little rice rolls that feel like a snack and a meal at the same time."
-  },
-  {
-    name: "Bulgogi Rice Bowl",
-    category: "Korean",
-    vibe: "Sweet-savory beef over rice with veggies. A perfect comfort bowl."
-  },
-  {
-    name: "Japchae",
-    category: "Korean",
-    vibe: "Glass noodles, veggies, and sweet-savory flavor. Light but satisfying."
-  },
-  {
-    name: "Kimchi Stew",
-    category: "Korean",
-    vibe: "Warm, spicy, and cozy for a cold or lazy day."
-  },
-  {
-    name: "Soondubu Jjigae",
-    category: "Korean",
-    vibe: "Soft tofu stew that feels warm, spicy, and comforting."
-  },
-  {
-    name: "Korean Corn Dog",
-    category: "Korean",
-    vibe: "Fun, cheesy, crispy, and perfect when she wants a snacky meal."
-  },
-  {
-    name: "Jajangmyeon",
-    category: "Korean",
-    vibe: "Noodles with black bean sauce. Savory, rich, and very comforting."
-  },
-  {
-    name: "Spicy Pork Rice Bowl",
-    category: "Korean",
-    vibe: "Bold, spicy, filling, and perfect with rice."
-  },
-
-  {
-    name: "Chicken Katsu",
-    category: "Japanese",
-    vibe: "Crispy chicken cutlet with rice and sauce. Simple, crunchy, and satisfying."
-  },
-  {
-    name: "Japanese Curry",
-    category: "Japanese",
-    vibe: "Warm curry over rice. Cozy, filling, and perfect for a chill night."
-  },
-  {
-    name: "Ramen",
-    category: "Japanese",
-    vibe: "Noodles, broth, toppings, and comfort in one bowl."
-  },
-  {
-    name: "Sushi Bowl",
-    category: "Japanese",
-    vibe: "All the sushi flavors without needing to roll anything."
-  },
-  {
-    name: "Onigiri",
-    category: "Japanese",
-    vibe: "Cute rice balls with filling. Perfect for a small meal or snack."
-  },
-  {
-    name: "Udon Noodle Soup",
-    category: "Japanese",
-    vibe: "Thick noodles in warm broth. Soft, cozy, and easy."
-  },
-  {
-    name: "Teriyaki Chicken Bowl",
-    category: "Japanese",
-    vibe: "Sweet-savory chicken over rice with veggies. Always a safe choice."
-  },
-  {
-    name: "Tempura",
-    category: "Japanese",
-    vibe: "Light, crispy, and perfect when she wants something fun."
-  },
-  {
-    name: "Gyoza",
-    category: "Japanese",
-    vibe: "Pan-fried dumplings that are always a good idea."
-  },
-  {
-    name: "Poke Bowl",
-    category: "Japanese-Inspired",
-    vibe: "Fresh, customizable, and perfect when she wants something lighter."
-  },
-
-  {
-    name: "Momo",
-    category: "Nepali",
-    vibe: "Juicy dumplings with spicy achar. Basically happiness in bite-sized form."
-  },
-  {
-    name: "Jhol Momo",
-    category: "Nepali",
-    vibe: "Momo in a spicy, tangy soup. Cozy and full of flavor."
-  },
-  {
-    name: "Chicken Chow Mein",
-    category: "Nepali",
-    vibe: "Stir-fried noodles that are quick, flavorful, and satisfying."
-  },
-  {
-    name: "Veg Chow Mein",
-    category: "Nepali",
-    vibe: "Noodles with veggies and big takeout energy."
-  },
-  {
-    name: "Thukpa",
-    category: "Nepali",
-    vibe: "Warm noodle soup for a cozy, feel-better meal."
-  },
-  {
-    name: "Dal Bhat",
-    category: "Nepali",
-    vibe: "Comforting rice, lentils, and sides. Simple and nourishing."
-  },
-  {
-    name: "Chicken Sekuwa",
-    category: "Nepali",
-    vibe: "Smoky, spiced grilled chicken that feels special."
-  },
-  {
-    name: "Chatpate",
-    category: "Nepali",
-    vibe: "Crunchy, spicy, tangy snack mix for when she wants something fun."
-  },
-  {
-    name: "Pani Puri",
-    category: "Nepali / South Asian",
-    vibe: "Crispy, tangy, spicy little bites that are impossible to eat sadly."
-  },
-  {
-    name: "Samosa Chaat",
-    category: "South Asian",
-    vibe: "Crunchy, saucy, spicy, and perfect for a snacky dinner."
-  },
-  {
-    name: "Aloo Paratha",
-    category: "South Asian",
-    vibe: "Stuffed flatbread with potato. Cozy, filling, and perfect with yogurt."
-  },
-  {
-    name: "Butter Chicken Rice Bowl",
-    category: "South Asian",
-    vibe: "Creamy, cozy, and perfect when she wants something rich."
-  },
-
-  {
-    name: "Chipotle Chicken Bowl",
-    category: "Chipotle-Style",
-    vibe: "Rice, beans, chicken, salsa, corn, cheese, and guac if she deserves extra happiness."
-  },
-  {
-    name: "Steak Burrito Bowl",
-    category: "Chipotle-Style",
-    vibe: "A filling bowl with steak, rice, beans, veggies, and all the toppings."
-  },
-  {
-    name: "Sofritas Bowl",
-    category: "Chipotle-Style",
-    vibe: "A plant-based bowl that is spicy, saucy, and satisfying."
-  },
-  {
-    name: "Chicken Burrito",
-    category: "Chipotle-Style",
-    vibe: "A classic wrap-it-all-up meal when she wants something filling."
-  },
-  {
-    name: "Quesadilla",
-    category: "Chipotle-Style",
-    vibe: "Cheesy, crispy, and perfect with salsa and sour cream."
-  },
-  {
-    name: "Taco Bowl",
-    category: "Chipotle-Style",
-    vibe: "All the taco flavors in bowl form. Easy and customizable."
-  },
-  {
-    name: "Loaded Nachos",
-    category: "Chipotle-Style",
-    vibe: "Crunchy chips, melty cheese, salsa, protein, and cozy chaos."
-  },
-  {
-    name: "Veggie Burrito Bowl",
-    category: "Chipotle-Style",
-    vibe: "Rice, beans, fajita veggies, salsa, corn, lettuce, and guac."
-  },
-
-  {
-    name: "Pho",
-    category: "Cozy Takeout",
-    vibe: "Warm broth, noodles, herbs, and comfort. Perfect for a tired day."
-  },
-  {
-    name: "Pad Thai",
-    category: "Cozy Takeout",
-    vibe: "Sweet, tangy, noodly, and always a good option."
-  },
-  {
-    name: "Drunken Noodles",
-    category: "Cozy Takeout",
-    vibe: "Spicy noodles with big flavor and takeout-night energy."
-  },
-  {
-    name: "Thai Green Curry",
-    category: "Cozy Takeout",
-    vibe: "Creamy, spicy, and amazing over rice."
-  },
-  {
-    name: "Dumplings",
-    category: "Quick Bites",
-    vibe: "Steam them, fry them, dip them, love them."
-  },
-  {
-    name: "Spring Rolls",
-    category: "Quick Bites",
-    vibe: "Fresh, crunchy, and perfect with peanut sauce."
-  },
-  {
-    name: "Fried Rice",
-    category: "Quick Meal",
-    vibe: "Easy, fast, and great for using whatever is in the fridge."
-  },
-  {
-    name: "Lo Mein",
-    category: "Cozy Takeout",
-    vibe: "Saucy noodles that always feel like a comfort meal."
-  },
-  {
-    name: "Orange Chicken",
-    category: "Cozy Takeout",
-    vibe: "Crispy chicken with sweet citrus sauce. Easy happiness."
-  },
-  {
-    name: "Shawarma Bowl",
-    category: "Rice Bowl",
-    vibe: "Rice, chicken, garlic sauce, veggies, and cozy Mediterranean flavor."
-  },
-  {
-    name: "Falafel Wrap",
-    category: "Quick Meal",
-    vibe: "Crunchy, fresh, saucy, and easy to grab."
-  },
-  {
-    name: "Chicken Caesar Wrap",
-    category: "Quick Meal",
-    vibe: "Simple, fresh, and good when she wants something easy."
-  },
-  {
-    name: "Avocado Toast with Egg",
-    category: "Quick Meal",
-    vibe: "Cute cafe energy at home."
-  },
-  {
-    name: "Grilled Cheese and Tomato Soup",
-    category: "Comfort Food",
-    vibe: "Classic, cozy, and perfect for a soft day."
-  },
-  {
-    name: "Mac and Cheese",
-    category: "Comfort Food",
-    vibe: "Cheesy comfort for when the day needs to be easier."
-  },
-  {
-    name: "Loaded Fries",
-    category: "Comfort Food",
-    vibe: "Crispy fries with toppings. Not healthy, but emotionally correct."
-  },
-  {
-    name: "Chicken Alfredo Pasta",
-    category: "Comfort Food",
-    vibe: "Creamy pasta for when she wants something rich and cozy."
-  },
-  {
-    name: "Pesto Pasta",
-    category: "Quick Meal",
-    vibe: "Fresh, easy, and cute dinner energy."
-  },
-  {
-    name: "Breakfast for Dinner",
-    category: "Comfort Food",
-    vibe: "Eggs, toast, hash browns, pancakes, or whatever feels fun."
-  },
-  {
-    name: "Boba and Snack Run",
-    category: "Treat",
-    vibe: "Not exactly dinner, but sometimes the heart wants boba."
-  },
-  {
-    name: "Smoothie Bowl",
-    category: "Light Meal",
-    vibe: "Fresh, pretty, and good for a lighter craving."
-  },
-  {
-    name: "Acai Bowl",
-    category: "Light Meal",
-    vibe: "Cold, fruity, and cute cafe vibes."
-  },
-  {
-    name: "Chicken Noodle Soup",
-    category: "Comfort Food",
-    vibe: "Soft, warm, and perfect when she needs comfort."
-  },
-  {
-    name: "Rice Bowl with Egg and Avocado",
-    category: "Quick Meal",
-    vibe: "Simple, filling, and easy to make with pantry basics."
-  }
-];
-
-// ---------- App State ----------
-let currentDate = new Date();
-
-let todos = getData("todos", []);
-let events = getData("events", []);
-let links = getData("links", defaultLinks);
-let budget = getData("budget", {
-  income: 0,
-  expenses: 0,
-  savings: 0
-});
-let wishlist = getData("wishlist", []);
-let photos = getData("photos", defaultPhotos);
-
-if (localStorage.getItem("links") === null) {
-  saveData("links", links);
-}
-
-if (localStorage.getItem("photos") === null) {
-  saveData("photos", photos);
-}
-
-// ---------- Tabs ----------
-const navButtons = document.querySelectorAll(".nav-btn");
-const tabs = document.querySelectorAll(".tab");
-
-navButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const tabName = button.dataset.tab;
-
-    navButtons.forEach((btn) => btn.classList.remove("active"));
-    tabs.forEach((tab) => tab.classList.remove("active"));
-
-    button.classList.add("active");
-    document.getElementById(tabName).classList.add("active");
-  });
-});
-
-// ---------- Today Card ----------
 const affirmations = [
   "You are loved more than you know.",
   "You are doing better than you think.",
@@ -551,7 +77,7 @@ const affirmations = [
   "You are magic in human form.",
   "You are enough, exactly as you are.",
   "You deserve a soft, happy, beautiful day.",
-  "You are stronger than today’s stress.",
+  "You are stronger than today's stress.",
   "You make everything feel warmer.",
   "You are allowed to take things one step at a time.",
   "You bring light into every room you enter.",
@@ -578,27 +104,138 @@ const affirmations = [
   "You are the reason this little hub exists."
 ];
 
+const foodIdeas = [
+  { name: "Bibimbap", category: "Korean", vibe: "A colorful rice bowl with veggies, egg, meat, and spicy gochujang." },
+  { name: "Tteokbokki", category: "Korean", vibe: "Spicy, chewy rice cakes for a cozy comfort-food craving." },
+  { name: "Korean Fried Chicken", category: "Korean", vibe: "Crispy, saucy, sweet, spicy, and perfect for a treat-yourself meal." },
+  { name: "Kimchi Fried Rice", category: "Korean", vibe: "Easy, flavorful, and perfect with a fried egg on top." },
+  { name: "Kimbap", category: "Korean", vibe: "Cute rice rolls that feel like a snack and a meal." },
+  { name: "Bulgogi Rice Bowl", category: "Korean", vibe: "Sweet-savory beef over rice with veggies." },
+  { name: "Japchae", category: "Korean", vibe: "Glass noodles, veggies, and sweet-savory flavor." },
+  { name: "Kimchi Stew", category: "Korean", vibe: "Warm, spicy, and cozy for a lazy day." },
+  { name: "Soondubu Jjigae", category: "Korean", vibe: "Soft tofu stew that feels warm and comforting." },
+  { name: "Korean Corn Dog", category: "Korean", vibe: "Fun, cheesy, crispy, and snacky." },
+  { name: "Jajangmyeon", category: "Korean", vibe: "Noodles with black bean sauce. Savory and rich." },
+
+  { name: "Chicken Katsu", category: "Japanese", vibe: "Crispy chicken cutlet with rice and sauce." },
+  { name: "Japanese Curry", category: "Japanese", vibe: "Warm curry over rice. Cozy and filling." },
+  { name: "Ramen", category: "Japanese", vibe: "Noodles, broth, toppings, and comfort in one bowl." },
+  { name: "Sushi Bowl", category: "Japanese", vibe: "All the sushi flavors without needing to roll anything." },
+  { name: "Onigiri", category: "Japanese", vibe: "Cute rice balls with filling." },
+  { name: "Udon Noodle Soup", category: "Japanese", vibe: "Thick noodles in warm broth." },
+  { name: "Teriyaki Chicken Bowl", category: "Japanese", vibe: "Sweet-savory chicken over rice with veggies." },
+  { name: "Tempura", category: "Japanese", vibe: "Light, crispy, and fun." },
+  { name: "Gyoza", category: "Japanese", vibe: "Pan-fried dumplings that are always a good idea." },
+  { name: "Poke Bowl", category: "Japanese-Inspired", vibe: "Fresh, customizable, and lighter." },
+
+  { name: "Momo", category: "Nepali", vibe: "Juicy dumplings with spicy achar." },
+  { name: "Jhol Momo", category: "Nepali", vibe: "Momo in a spicy, tangy soup." },
+  { name: "Chicken Chow Mein", category: "Nepali", vibe: "Stir-fried noodles that are flavorful and satisfying." },
+  { name: "Veg Chow Mein", category: "Nepali", vibe: "Noodles with veggies and takeout energy." },
+  { name: "Thukpa", category: "Nepali", vibe: "Warm noodle soup for a cozy meal." },
+  { name: "Dal Bhat", category: "Nepali", vibe: "Comforting rice, lentils, and sides." },
+  { name: "Chicken Sekuwa", category: "Nepali", vibe: "Smoky, spiced grilled chicken." },
+  { name: "Chatpate", category: "Nepali", vibe: "Crunchy, spicy, tangy snack mix." },
+  { name: "Pani Puri", category: "South Asian", vibe: "Crispy, tangy, spicy little bites." },
+  { name: "Samosa Chaat", category: "South Asian", vibe: "Crunchy, saucy, spicy, and snacky." },
+  { name: "Aloo Paratha", category: "South Asian", vibe: "Stuffed flatbread with potato." },
+  { name: "Butter Chicken Rice Bowl", category: "South Asian", vibe: "Creamy, cozy, and rich." },
+
+  { name: "Chipotle Chicken Bowl", category: "Chipotle-Style", vibe: "Rice, beans, chicken, salsa, corn, cheese, and guac." },
+  { name: "Steak Burrito Bowl", category: "Chipotle-Style", vibe: "Steak, rice, beans, veggies, and all the toppings." },
+  { name: "Sofritas Bowl", category: "Chipotle-Style", vibe: "Plant-based, spicy, saucy, and satisfying." },
+  { name: "Chicken Burrito", category: "Chipotle-Style", vibe: "A classic wrap-it-all-up meal." },
+  { name: "Quesadilla", category: "Chipotle-Style", vibe: "Cheesy, crispy, and perfect with salsa." },
+  { name: "Taco Bowl", category: "Chipotle-Style", vibe: "All the taco flavors in bowl form." },
+  { name: "Loaded Nachos", category: "Chipotle-Style", vibe: "Crunchy chips, melty cheese, salsa, and protein." },
+  { name: "Veggie Burrito Bowl", category: "Chipotle-Style", vibe: "Rice, beans, veggies, salsa, lettuce, and guac." },
+
+  { name: "Pho", category: "Cozy Takeout", vibe: "Warm broth, noodles, herbs, and comfort." },
+  { name: "Pad Thai", category: "Cozy Takeout", vibe: "Sweet, tangy, noodly, and always good." },
+  { name: "Drunken Noodles", category: "Cozy Takeout", vibe: "Spicy noodles with big flavor." },
+  { name: "Thai Green Curry", category: "Cozy Takeout", vibe: "Creamy, spicy, and amazing over rice." },
+  { name: "Dumplings", category: "Quick Bites", vibe: "Steam them, fry them, dip them, love them." },
+  { name: "Spring Rolls", category: "Quick Bites", vibe: "Fresh, crunchy, and perfect with peanut sauce." },
+  { name: "Fried Rice", category: "Quick Meal", vibe: "Easy, fast, and customizable." },
+  { name: "Lo Mein", category: "Cozy Takeout", vibe: "Saucy noodles that always feel comforting." },
+  { name: "Orange Chicken", category: "Cozy Takeout", vibe: "Crispy chicken with sweet citrus sauce." },
+  { name: "Shawarma Bowl", category: "Rice Bowl", vibe: "Rice, chicken, garlic sauce, and veggies." },
+  { name: "Falafel Wrap", category: "Quick Meal", vibe: "Crunchy, fresh, saucy, and easy." },
+  { name: "Chicken Caesar Wrap", category: "Quick Meal", vibe: "Simple, fresh, and easy." },
+  { name: "Avocado Toast with Egg", category: "Quick Meal", vibe: "Cute cafe energy at home." },
+  { name: "Grilled Cheese and Tomato Soup", category: "Comfort Food", vibe: "Classic, cozy, and soft-day approved." },
+  { name: "Mac and Cheese", category: "Comfort Food", vibe: "Cheesy comfort for when the day needs to be easier." },
+  { name: "Loaded Fries", category: "Comfort Food", vibe: "Crispy fries with toppings. Emotionally correct." },
+  { name: "Chicken Alfredo Pasta", category: "Comfort Food", vibe: "Creamy pasta for something rich and cozy." },
+  { name: "Pesto Pasta", category: "Quick Meal", vibe: "Fresh, easy, and cute dinner energy." },
+  { name: "Breakfast for Dinner", category: "Comfort Food", vibe: "Eggs, toast, hash browns, pancakes, or whatever feels fun." },
+  { name: "Boba and Snack Run", category: "Treat", vibe: "Not exactly dinner, but sometimes the heart wants boba." },
+  { name: "Smoothie Bowl", category: "Light Meal", vibe: "Fresh, pretty, and lighter." },
+  { name: "Acai Bowl", category: "Light Meal", vibe: "Cold, fruity, and cute cafe vibes." },
+  { name: "Chicken Noodle Soup", category: "Comfort Food", vibe: "Soft, warm, and comforting." },
+  { name: "Rice Bowl with Egg and Avocado", category: "Quick Meal", vibe: "Simple, filling, and easy." }
+];
+
+let currentDate = new Date();
+
+let todos = getData("todos", []);
+let events = getData("events", []);
+let links = getData("links", defaultLinks);
+let budget = getData("budget", {
+  income: 0,
+  expenses: 0,
+  savings: 0
+});
+let wishlist = getData("wishlist", []);
+let photos = getData("photos", defaultPhotos);
+
+if (localStorage.getItem("links") === null) {
+  saveData("links", links);
+}
+
+if (localStorage.getItem("photos") === null) {
+  saveData("photos", photos);
+}
+
+const navButtons = document.querySelectorAll(".nav-btn");
+const tabs = document.querySelectorAll(".tab");
+
+navButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    const tabName = button.dataset.tab;
+
+    navButtons.forEach(function (btn) {
+      btn.classList.remove("active");
+    });
+
+    tabs.forEach(function (tab) {
+      tab.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    document.getElementById(tabName).classList.add("active");
+  });
+});
+
 function renderTodayCard() {
   const today = new Date();
   const todayString = today.toISOString().split("T")[0];
 
-  document.getElementById("todayDate").textContent = today.toLocaleDateString(
-    "en-US",
-    {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      year: "numeric"
-    }
-  );
+  document.getElementById("todayDate").textContent = today.toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric"
+  });
 
   const dailyIndex = hashString(todayString) % affirmations.length;
-  document.getElementById("affirmationText").textContent =
-    affirmations[dailyIndex];
+  document.getElementById("affirmationText").textContent = affirmations[dailyIndex];
 
-  const todayEvents = events.filter((event) => event.date === todayString);
+  const todayEvents = events.filter(function (event) {
+    return event.date === todayString;
+  });
+
   const todayEventsList = document.getElementById("todayEvents");
-
   todayEventsList.innerHTML = "";
 
   if (todayEvents.length === 0) {
@@ -606,14 +243,13 @@ function renderTodayCard() {
     return;
   }
 
-  todayEvents.forEach((event) => {
+  todayEvents.forEach(function (event) {
     const li = document.createElement("li");
     li.textContent = event.text;
     todayEventsList.appendChild(li);
   });
 }
 
-// ---------- Calendar ----------
 const calendar = document.getElementById("calendar");
 const monthYear = document.getElementById("monthYear");
 
@@ -644,9 +280,12 @@ function renderCalendar() {
     const dayBox = document.createElement("div");
     dayBox.classList.add("day");
 
-    const dateString = `${year}-${String(month + 1).padStart(2, "0")}-${String(
-      day
-    ).padStart(2, "0")}`;
+    const dateString =
+      year +
+      "-" +
+      String(month + 1).padStart(2, "0") +
+      "-" +
+      String(day).padStart(2, "0");
 
     const todayString = new Date().toISOString().split("T")[0];
 
@@ -659,17 +298,23 @@ function renderCalendar() {
     dayNumber.textContent = day;
     dayBox.appendChild(dayNumber);
 
-    const dayEvents = events.filter((event) => event.date === dateString);
+    const dayEvents = events.filter(function (event) {
+      return event.date === dateString;
+    });
 
-    dayEvents.forEach((event) => {
+    dayEvents.forEach(function (event) {
       const eventPill = document.createElement("div");
       eventPill.classList.add("event-pill");
       eventPill.textContent = event.text;
       eventPill.title = "Click to delete";
 
-      eventPill.addEventListener("click", (e) => {
+      eventPill.addEventListener("click", function (e) {
         e.stopPropagation();
-        events = events.filter((item) => item.id !== event.id);
+
+        events = events.filter(function (item) {
+          return item.id !== event.id;
+        });
+
         saveData("events", events);
         renderCalendar();
         renderTodayCard();
@@ -678,7 +323,7 @@ function renderCalendar() {
       dayBox.appendChild(eventPill);
     });
 
-    dayBox.addEventListener("click", () => {
+    dayBox.addEventListener("click", function () {
       document.getElementById("eventDate").value = dateString;
       document.getElementById("eventText").focus();
     });
@@ -687,50 +332,49 @@ function renderCalendar() {
   }
 }
 
-document.getElementById("prevMonth").addEventListener("click", () => {
+document.getElementById("prevMonth").addEventListener("click", function () {
   currentDate.setMonth(currentDate.getMonth() - 1);
   renderCalendar();
 });
 
-document.getElementById("nextMonth").addEventListener("click", () => {
+document.getElementById("nextMonth").addEventListener("click", function () {
   currentDate.setMonth(currentDate.getMonth() + 1);
   renderCalendar();
 });
 
-document.getElementById("eventForm").addEventListener("submit", (e) => {
+document.getElementById("eventForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const date = document.getElementById("eventDate").value;
   const text = document.getElementById("eventText").value.trim();
 
-  if (!date || !text) return;
+  if (!date || !text) {
+    return;
+  }
 
   events.push({
     id: Date.now(),
-    date,
-    text
+    date: date,
+    text: text
   });
 
   saveData("events", events);
-
   document.getElementById("eventForm").reset();
 
   renderCalendar();
   renderTodayCard();
 });
 
-// ---------- To-Do List ----------
 function renderTodos() {
   const todoList = document.getElementById("todoList");
   todoList.innerHTML = "";
 
   if (todos.length === 0) {
-    todoList.innerHTML =
-      "<li>No tasks yet. Add something cute or productive.</li>";
+    todoList.innerHTML = "<li>No tasks yet. Add something cute or productive.</li>";
     return;
   }
 
-  todos.forEach((todo) => {
+  todos.forEach(function (todo) {
     const li = document.createElement("li");
 
     if (todo.done) {
@@ -740,7 +384,7 @@ function renderTodos() {
     const span = document.createElement("span");
     span.textContent = todo.text;
 
-    span.addEventListener("click", () => {
+    span.addEventListener("click", function () {
       todo.done = !todo.done;
       saveData("todos", todos);
       renderTodos();
@@ -750,8 +394,11 @@ function renderTodos() {
     deleteButton.textContent = "Delete";
     deleteButton.classList.add("delete-btn");
 
-    deleteButton.addEventListener("click", () => {
-      todos = todos.filter((item) => item.id !== todo.id);
+    deleteButton.addEventListener("click", function () {
+      todos = todos.filter(function (item) {
+        return item.id !== todo.id;
+      });
+
       saveData("todos", todos);
       renderTodos();
     });
@@ -762,17 +409,19 @@ function renderTodos() {
   });
 }
 
-document.getElementById("todoForm").addEventListener("submit", (e) => {
+document.getElementById("todoForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const input = document.getElementById("todoInput");
   const text = input.value.trim();
 
-  if (!text) return;
+  if (!text) {
+    return;
+  }
 
   todos.push({
     id: Date.now(),
-    text,
+    text: text,
     done: false
   });
 
@@ -782,7 +431,6 @@ document.getElementById("todoForm").addEventListener("submit", (e) => {
   renderTodos();
 });
 
-// ---------- Useful Links ----------
 function renderLinks() {
   const linksList = document.getElementById("linksList");
   linksList.innerHTML = "";
@@ -792,19 +440,26 @@ function renderLinks() {
     return;
   }
 
-  links.forEach((link) => {
+  links.forEach(function (link) {
     const card = document.createElement("div");
     card.classList.add("mini-card");
 
-    card.innerHTML = `
-      <h3>${link.name}</h3>
-      <a href="${link.url}" target="_blank">${link.url}</a>
-      <br><br>
-      <button class="delete-btn">Delete</button>
-    `;
+    card.innerHTML =
+      "<h3>" +
+      link.name +
+      "</h3>" +
+      '<a href="' +
+      link.url +
+      '" target="_blank">' +
+      link.url +
+      "</a><br><br>" +
+      '<button class="delete-btn">Delete</button>';
 
-    card.querySelector("button").addEventListener("click", () => {
-      links = links.filter((item) => item.id !== link.id);
+    card.querySelector("button").addEventListener("click", function () {
+      links = links.filter(function (item) {
+        return item.id !== link.id;
+      });
+
       saveData("links", links);
       renderLinks();
     });
@@ -813,18 +468,20 @@ function renderLinks() {
   });
 }
 
-document.getElementById("linkForm").addEventListener("submit", (e) => {
+document.getElementById("linkForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const name = document.getElementById("linkName").value.trim();
   const url = document.getElementById("linkUrl").value.trim();
 
-  if (!name || !url) return;
+  if (!name || !url) {
+    return;
+  }
 
   links.push({
     id: Date.now(),
-    name,
-    url
+    name: name,
+    url: url
   });
 
   saveData("links", links);
@@ -833,7 +490,6 @@ document.getElementById("linkForm").addEventListener("submit", (e) => {
   renderLinks();
 });
 
-// ---------- Budget ----------
 function renderBudget() {
   document.getElementById("incomeInput").value = budget.income || "";
   document.getElementById("expenseInput").value = budget.expenses || "";
@@ -842,20 +498,13 @@ function renderBudget() {
   const leftover =
     Number(budget.income) - Number(budget.expenses) - Number(budget.savings);
 
-  document.getElementById("incomeDisplay").textContent = formatMoney(
-    budget.income
-  );
-  document.getElementById("expenseDisplay").textContent = formatMoney(
-    budget.expenses
-  );
-  document.getElementById("savingsDisplay").textContent = formatMoney(
-    budget.savings
-  );
-  document.getElementById("leftoverDisplay").textContent =
-    formatMoney(leftover);
+  document.getElementById("incomeDisplay").textContent = formatMoney(budget.income);
+  document.getElementById("expenseDisplay").textContent = formatMoney(budget.expenses);
+  document.getElementById("savingsDisplay").textContent = formatMoney(budget.savings);
+  document.getElementById("leftoverDisplay").textContent = formatMoney(leftover);
 }
 
-document.getElementById("saveBudget").addEventListener("click", () => {
+document.getElementById("saveBudget").addEventListener("click", function () {
   budget = {
     income: Number(document.getElementById("incomeInput").value || 0),
     expenses: Number(document.getElementById("expenseInput").value || 0),
@@ -866,7 +515,6 @@ document.getElementById("saveBudget").addEventListener("click", () => {
   renderBudget();
 });
 
-// ---------- Wishlist ----------
 function renderWishlist() {
   const wishlistItems = document.getElementById("wishlistItems");
   wishlistItems.innerHTML = "";
@@ -876,23 +524,27 @@ function renderWishlist() {
     return;
   }
 
-  wishlist.forEach((wish) => {
+  wishlist.forEach(function (wish) {
     const card = document.createElement("div");
     card.classList.add("mini-card");
 
-    card.innerHTML = `
-      <h3>${wish.name}</h3>
-      <p><strong>Price:</strong> ${
-        wish.price ? formatMoney(wish.price) : "Not added"
-      }</p>
-      <p><strong>Priority:</strong> ${wish.priority}</p>
-      ${wish.url ? `<a href="${wish.url}" target="_blank">View Item</a>` : ""}
-      <br><br>
-      <button class="delete-btn">Delete</button>
-    `;
+    let html = "<h3>" + wish.name + "</h3>";
+    html += "<p><strong>Price:</strong> " + (wish.price ? formatMoney(wish.price) : "Not added") + "</p>";
+    html += "<p><strong>Priority:</strong> " + wish.priority + "</p>";
 
-    card.querySelector("button").addEventListener("click", () => {
-      wishlist = wishlist.filter((item) => item.id !== wish.id);
+    if (wish.url) {
+      html += '<a href="' + wish.url + '" target="_blank">View Item</a>';
+    }
+
+    html += '<br><br><button class="delete-btn">Delete</button>';
+
+    card.innerHTML = html;
+
+    card.querySelector("button").addEventListener("click", function () {
+      wishlist = wishlist.filter(function (item) {
+        return item.id !== wish.id;
+      });
+
       saveData("wishlist", wishlist);
       renderWishlist();
     });
@@ -901,7 +553,7 @@ function renderWishlist() {
   });
 }
 
-document.getElementById("wishlistForm").addEventListener("submit", (e) => {
+document.getElementById("wishlistForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const name = document.getElementById("wishName").value.trim();
@@ -909,14 +561,16 @@ document.getElementById("wishlistForm").addEventListener("submit", (e) => {
   const url = document.getElementById("wishUrl").value.trim();
   const priority = document.getElementById("wishPriority").value;
 
-  if (!name) return;
+  if (!name) {
+    return;
+  }
 
   wishlist.push({
     id: Date.now(),
-    name,
-    price,
-    url,
-    priority
+    name: name,
+    price: price,
+    url: url,
+    priority: priority
   });
 
   saveData("wishlist", wishlist);
@@ -925,7 +579,6 @@ document.getElementById("wishlistForm").addEventListener("submit", (e) => {
   renderWishlist();
 });
 
-// ---------- Photo Gallery ----------
 function renderPhotos() {
   const photoGallery = document.getElementById("photoGallery");
   photoGallery.innerHTML = "";
@@ -935,19 +588,26 @@ function renderPhotos() {
     return;
   }
 
-  photos.forEach((photo) => {
+  photos.forEach(function (photo) {
     const card = document.createElement("div");
     card.classList.add("photo-card");
 
-    card.innerHTML = `
-      <img src="${photo.image}" alt="${photo.caption || "Memory photo"}" />
-      <p>${photo.caption || "A sweet memory"}</p>
-      <br>
-      <button class="delete-btn">Delete</button>
-    `;
+    card.innerHTML =
+      '<img src="' +
+      photo.image +
+      '" alt="' +
+      (photo.caption || "Memory photo") +
+      '" />' +
+      "<p>" +
+      (photo.caption || "A sweet memory") +
+      "</p><br>" +
+      '<button class="delete-btn">Delete</button>';
 
-    card.querySelector("button").addEventListener("click", () => {
-      photos = photos.filter((item) => item.id !== photo.id);
+    card.querySelector("button").addEventListener("click", function () {
+      photos = photos.filter(function (item) {
+        return item.id !== photo.id;
+      });
+
       saveData("photos", photos);
       renderPhotos();
     });
@@ -956,14 +616,16 @@ function renderPhotos() {
   });
 }
 
-document.getElementById("photoForm").addEventListener("submit", (e) => {
+document.getElementById("photoForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
   const fileInput = document.getElementById("photoInput");
   const caption = document.getElementById("photoCaption").value.trim();
   const file = fileInput.files[0];
 
-  if (!file) return;
+  if (!file) {
+    return;
+  }
 
   const reader = new FileReader();
 
@@ -971,7 +633,7 @@ document.getElementById("photoForm").addEventListener("submit", (e) => {
     photos.push({
       id: Date.now(),
       image: reader.result,
-      caption
+      caption: caption
     });
 
     saveData("photos", photos);
@@ -983,28 +645,27 @@ document.getElementById("photoForm").addEventListener("submit", (e) => {
   reader.readAsDataURL(file);
 });
 
-// ---------- What to Eat ----------
 function renderRandomFood() {
   const randomIndex = Math.floor(Math.random() * foodIdeas.length);
   const food = foodIdeas[randomIndex];
 
   const foodResult = document.getElementById("foodResult");
 
-  foodResult.innerHTML = `
-    <p class="small-label">Today's pick</p>
-    <h3>${food.name}</h3>
-    <span class="food-category">${food.category}</span>
-    <p>${food.vibe}</p>
-  `;
+  foodResult.innerHTML =
+    '<p class="small-label">Today&apos;s pick</p>' +
+    "<h3>" +
+    food.name +
+    "</h3>" +
+    '<span class="food-category">' +
+    food.category +
+    "</span>" +
+    "<p>" +
+    food.vibe +
+    "</p>";
 }
 
-const pickFoodBtn = document.getElementById("pickFoodBtn");
+document.getElementById("pickFoodBtn").addEventListener("click", renderRandomFood);
 
-if (pickFoodBtn) {
-  pickFoodBtn.addEventListener("click", renderRandomFood);
-}
-
-// ---------- Initial Render ----------
 renderTodayCard();
 renderCalendar();
 renderTodos();
