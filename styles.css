@@ -50,7 +50,6 @@ nav {
   font-weight: bold;
   cursor: pointer;
   text-align: left;
-  transition: 0.2s;
 }
 
 .nav-btn:hover,
@@ -87,12 +86,6 @@ nav {
 
 .today-card {
   background: linear-gradient(135deg, #ffffff, #ffe1ee);
-}
-
-.today-card h2,
-.todo-card h2,
-.calendar-card h2 {
-  margin-top: 0;
 }
 
 .affirmation {
@@ -334,7 +327,6 @@ button:hover {
   text-align: center;
 }
 
-/* What to Eat */
 .food-card {
   max-width: 850px;
 }
@@ -351,7 +343,6 @@ button:hover {
   font-size: 20px;
   padding: 20px;
   border-radius: 24px;
-  box-shadow: 0 8px 18px rgba(141, 69, 101, 0.16);
 }
 
 .food-result {
@@ -366,10 +357,6 @@ button:hover {
   font-size: 30px;
   margin: 8px 0;
   color: #d63384;
-}
-
-.food-result p {
-  line-height: 1.5;
 }
 
 .small-label {
